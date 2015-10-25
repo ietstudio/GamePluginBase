@@ -3,12 +3,12 @@ PODS:
   - Expecta+Snapshots (2.0.0):
     - Expecta (~> 1.0)
     - FBSnapshotTestCase/Core (~> 2.0.3)
-  - FBSnapshotTestCase (2.0.4):
-    - FBSnapshotTestCase/SwiftSupport (= 2.0.4)
-  - FBSnapshotTestCase/Core (2.0.4)
-  - FBSnapshotTestCase/SwiftSupport (2.0.4):
+  - FBSnapshotTestCase (2.0.5):
+    - FBSnapshotTestCase/SwiftSupport (= 2.0.5)
+  - FBSnapshotTestCase/Core (2.0.5)
+  - FBSnapshotTestCase/SwiftSupport (2.0.5):
     - FBSnapshotTestCase/Core
-  - GamePluginBase (0.1.0)
+  - GamePluginBase (0.1.1)
   - Specta (1.0.4)
 
 DEPENDENCIES:
@@ -25,8 +25,8 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Expecta: 9d1bff6c8b0eeee73a166a2ee898892478927a15
   Expecta+Snapshots: 29b38dd695bc72a0ed2bea833937d78df41943ba
-  FBSnapshotTestCase: d94cf34841c9e77390e29009e8e2713479d48753
-  GamePluginBase: 89fef34098802ca3bb12011a015eaaaddff00ddd
+  FBSnapshotTestCase: 6917deb01d0556dd544536f9eb34e0cf26f904d5
+  GamePluginBase: addf861b1a5837452dc0688bf0ede4615b5f5f3a
   Specta: 69bb134672aae190a1379ff91df07dad8dd1f869
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0

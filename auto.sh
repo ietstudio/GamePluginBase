@@ -11,12 +11,12 @@ pringMsg
 
 echo "-->update example proj"
 cd Example
-pod install --no-repo-update
+pod update --no-repo-update
 cd ..
 pringMsg
 
 echo "-->pod lib lint"
-pod lib lint --sources='https://github.com/ietstudio/myspecs.git,https://github.com/CocoaPods/Specs.git'
+pod lib lint --sources='https://github.com/ietstudio/Specs.git,https://github.com/CocoaPods/Specs.git'
 pringMsg
 
 echo "-->commit"
@@ -37,7 +37,7 @@ git push --tag
 pringMsg
 
 echo "-->pod spec lint"
-pod spec lint --sources='https://github.com/ietstudio/myspecs.git,https://github.com/CocoaPods/Specs.git'
+pod spec lint --sources='https://github.com/ietstudio/Specs.git,https://github.com/CocoaPods/Specs.git'
 pringMsg
 
 echo "-->pod repo push"
