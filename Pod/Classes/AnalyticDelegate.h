@@ -36,6 +36,14 @@
 - (void)onEvent:(NSString*)eventId Label:(NSString*)label;
 
 /**
+ *  自定义事件
+ *
+ *  @param eventId  事件ID
+ *  @param userInfo 事件内容
+ */
+- (void)onEvent:(NSString*)eventId eventData:(NSDictionary*)userInfo;
+
+/**
  *  设置等级
  *
  *  @param level 等级

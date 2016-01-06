@@ -2,7 +2,6 @@
 
 #import "AdvertiseDelegate.h"
 #import "AnalyticDelegate.h"
-#import "CrashlyticDelegate.h"
 #import "FeedbackDelegate.h"
 #import "LifeCycleDelegate.h"
 #import "Macros.h"
