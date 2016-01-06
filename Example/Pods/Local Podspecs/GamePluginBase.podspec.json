@@ -1,6 +1,6 @@
 {
   "name": "GamePluginBase",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "summary": "GamePluginBase.",
   "description": "GamePluginBase..",
   "homepage": "https://github.com/ietstudio/GamePluginBase",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/ietstudio/GamePluginBase.git",
-    "tag": "0.1.4"
+    "tag": "0.1.5"
   },
   "platforms": {
     "ios": "7.0"

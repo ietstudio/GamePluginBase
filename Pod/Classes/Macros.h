@@ -6,11 +6,6 @@
 //
 //
 
-/**
- *  常用宏定义
- *
- */
-
 //获取设备屏幕尺寸
 #define UA_SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define UA_SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)

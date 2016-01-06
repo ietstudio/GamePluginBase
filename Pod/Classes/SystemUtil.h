@@ -18,6 +18,7 @@
 
 @property(nonatomic, retain)UIWindow* window;
 @property(nonatomic, retain)UIViewController* controller;
+@property(nonatomic, retain)NSString* buildNum;
 
 SINGLETON_DECLARE(SystemUtil)
 
