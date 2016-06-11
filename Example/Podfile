@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'GamePluginBase_Example' do
+  pod 'GamePluginBase', :path => '../'
+
+  target 'GamePluginBase_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
