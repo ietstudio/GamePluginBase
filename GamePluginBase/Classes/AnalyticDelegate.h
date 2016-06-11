@@ -86,4 +86,26 @@
  */
 - (void)use:(NSString*)name :(int)amount :(double)coin;
 
+/**
+ *  任务开启
+ *
+ *  @param missionId 任务ID
+ */
+- (void)missionStart:(NSString*)missionId;
+
+/**
+ *  任务达成
+ *
+ *  @param missionId 任务ID
+ */
+- (void)missionSuccess:(NSString*)missionId;
+
+/**
+ *  任务失败
+ *
+ *  @param missionId 任务ID
+ *  @param reason    失败原因
+ */
+- (void)missionFailed:(NSString*)missionId because:(NSString*)reason;
+
 @end

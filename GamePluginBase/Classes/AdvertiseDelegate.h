@@ -15,8 +15,13 @@
 
 /**
  *  显示Banner广告
+ *
+ *  @param portrait 竖屏
+ *  @param bottom   底部
+ *
+ *  @return 广告条高度
  */
-- (void)showBannerAd:(BOOL)landscape;
+- (int)showBannerAd:(BOOL)portrait :(BOOL)bottom;
 
 /**
  *  隐藏Banner广告

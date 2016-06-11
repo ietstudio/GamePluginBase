@@ -14,7 +14,7 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
-  - GamePluginBase (0.1.5):
+  - GamePluginBase (0.1.7):
     - BlocksKit (~> 2.2.5)
     - MBProgressHUD (~> 0.9.1)
     - Reachability (~> 3.2)
@@ -30,7 +30,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
-  GamePluginBase: 91f648da6e51814365d7e8509b66b8c3b910881b
+  GamePluginBase: d049cd3807779c92b6e54c6a1a0b7c56546b65bb
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
 
