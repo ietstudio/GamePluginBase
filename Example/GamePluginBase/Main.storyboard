@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="whP-gf-Uak">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="whP-gf-Uak">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,6 +16,99 @@
                     <view key="view" contentMode="scaleToFill" id="TpU-gO-2f1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89b-e8-ztD">
+                                <rect key="frame" x="20" y="20" width="108" height="30"/>
+                                <state key="normal" title="GetConfigValue"/>
+                                <connections>
+                                    <action selector="getConfigValue:" destination="whP-gf-Uak" eventType="touchUpInside" id="dV9-4r-fZr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Gg-lH-Bkl">
+                                <rect key="frame" x="20" y="58" width="103" height="30"/>
+                                <state key="normal" title="GetAppVersion"/>
+                                <connections>
+                                    <action selector="getAppVersion:" destination="whP-gf-Uak" eventType="touchUpInside" id="KS4-8f-ri0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lXW-Y5-mMv">
+                                <rect key="frame" x="20" y="96" width="80" height="30"/>
+                                <state key="normal" title="GetCountry"/>
+                                <connections>
+                                    <action selector="getCountry:" destination="whP-gf-Uak" eventType="touchUpInside" id="LK6-oL-0e5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXA-Gk-hAp">
+                                <rect key="frame" x="20" y="172" width="112" height="30"/>
+                                <state key="normal" title="GetDeviceName"/>
+                                <connections>
+                                    <action selector="getDeviceName:" destination="whP-gf-Uak" eventType="touchUpInside" id="Hq1-aG-Bt9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0Q-wh-UPd">
+                                <rect key="frame" x="20" y="210" width="126" height="30"/>
+                                <state key="normal" title="GetSystemVersion"/>
+                                <connections>
+                                    <action selector="getSystemVersion:" destination="whP-gf-Uak" eventType="touchUpInside" id="Xhi-kC-hGl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jwn-PT-il5">
+                                <rect key="frame" x="20" y="248" width="86" height="30"/>
+                                <state key="normal" title="GetCpuTime"/>
+                                <connections>
+                                    <action selector="getCpuTime:" destination="whP-gf-Uak" eventType="touchUpInside" id="POA-Op-xl0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="huO-zA-hUP">
+                                <rect key="frame" x="20" y="285" width="119" height="30"/>
+                                <state key="normal" title="GetNetworkState"/>
+                                <connections>
+                                    <action selector="getNetworkState:" destination="whP-gf-Uak" eventType="touchUpInside" id="yYd-Np-Q6i"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zZ-iJ-Vkz">
+                                <rect key="frame" x="20" y="323" width="134" height="30"/>
+                                <state key="normal" title="ShowChooseDialog"/>
+                                <connections>
+                                    <action selector="showChooseDialog:" destination="whP-gf-Uak" eventType="touchUpInside" id="ryH-ps-2lT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEQ-yR-tRa">
+                                <rect key="frame" x="20" y="361" width="142" height="30"/>
+                                <state key="normal" title="ShowProgressDialog"/>
+                                <connections>
+                                    <action selector="showProgressDialog:" destination="whP-gf-Uak" eventType="touchUpInside" id="aau-Bh-nyn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uz7-Ac-n6W">
+                                <rect key="frame" x="20" y="399" width="93" height="30"/>
+                                <state key="normal" title="ShowLoading"/>
+                                <connections>
+                                    <action selector="showLoading:" destination="whP-gf-Uak" eventType="touchUpInside" id="574-eq-NQo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JED-hm-T9I">
+                                <rect key="frame" x="205" y="58" width="50" height="30"/>
+                                <state key="normal" title="Vibrate"/>
+                                <connections>
+                                    <action selector="vibrate:" destination="whP-gf-Uak" eventType="touchUpInside" id="Bd0-m4-JBt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xba-qF-8BP">
+                                <rect key="frame" x="20" y="134" width="93" height="30"/>
+                                <state key="normal" title="GetLanguage"/>
+                                <connections>
+                                    <action selector="getLanguage:" destination="whP-gf-Uak" eventType="touchUpInside" id="kZi-LM-wGF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6t-jm-iqJ">
+                                <rect key="frame" x="205" y="20" width="100" height="30"/>
+                                <state key="normal" title="ShowMessage"/>
+                                <connections>
+                                    <action selector="showMessage:" destination="whP-gf-Uak" eventType="touchUpInside" id="cFV-RW-1MX"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>

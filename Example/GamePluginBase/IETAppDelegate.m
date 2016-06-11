@@ -7,12 +7,19 @@
 //
 
 #import "IETAppDelegate.h"
+#import "IOSSystemUtil.h"
 
 @implementation IETAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    self.window.rootViewController=[storyboard instantiateInitialViewController];
+    [self.window makeKeyAndVisible];
+    
+    [[IOSSystemUtil getInstance] setWindow:self.window];
+    [[IOSSystemUtil getInstance] setController:self.window.rootViewController];
     return YES;
 }
 

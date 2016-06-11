@@ -1,0 +1,39 @@
+PODS:
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - GamePluginBase (0.1.5):
+    - BlocksKit (~> 2.2.5)
+    - MBProgressHUD (~> 0.9.1)
+    - Reachability (~> 3.2)
+  - MBProgressHUD (0.9.2)
+  - Reachability (3.2)
+
+DEPENDENCIES:
+  - GamePluginBase (from `../`)
+
+EXTERNAL SOURCES:
+  GamePluginBase:
+    :path: ../
+
+SPEC CHECKSUMS:
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  GamePluginBase: 91f648da6e51814365d7e8509b66b8c3b910881b
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+
+PODFILE CHECKSUM: 8778c1fddec8311d5079b6f53bc5dc74733edb36
+
+COCOAPODS: 1.0.1
