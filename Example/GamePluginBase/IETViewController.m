@@ -9,7 +9,11 @@
 #import "IETViewController.h"
 #import "IOSSystemUtil.h"
 
-@interface IETViewController ()
+@interface IETViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property (retain, nonatomic) UITableView *tableView;
+
+@property (retain, nonatomic) NSArray* dataList;
 
 @end
 
@@ -18,7 +22,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    [self initDataList];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame
+                                                  style:UITableViewStylePlain];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    [self.view addSubview:self.tableView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -27,69 +37,125 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)getConfigValue:(id)sender {
-    NSLog(@"%@", [[IOSSystemUtil getInstance] getConfigValueWithKey:@"MyKey"]);
+- (void)initDataList {
+    NSMutableArray* dataList = [NSMutableArray array];
+    [dataList addObject:@{@"name":@"getConfigValueWithKey", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] getConfigValueWithKey:@"MyKey"]);
+    }}];
+    [dataList addObject:@{@"name":@"getBundleId", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] getBundleId]);
+    }}];
+    [dataList addObject:@{@"name":@"getAppName", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] getAppName]);
+    }}];
+    [dataList addObject:@{@"name":@"getAppVersion", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] getAppVersion]);
+    }}];
+    [dataList addObject:@{@"name":@"getCountryCode", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] getCountryCode]);
+    }}];
+    [dataList addObject:@{@"name":@"getLanguageCode", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] getLanguageCode]);
+    }}];
+    [dataList addObject:@{@"name":@"getDeviceName", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] getDeviceName]);
+    }}];
+    [dataList addObject:@{@"name":@"getSystemVersion", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] getSystemVersion]);
+    }}];
+    [dataList addObject:@{@"name":@"getCpuTime", @"func":^(){
+        NSLog(@"%ld", [[IOSSystemUtil getInstance] getCpuTime]);
+    }}];
+    [dataList addObject:@{@"name":@"getNetworkState", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] getNetworkState]);
+    }}];
+    [dataList addObject:@{@"name":@"showAlertDialog", @"func":^(){
+        [[IOSSystemUtil getInstance] showAlertDialogWithTitle:@"title"
+                                                      message:@"message"
+                                               cancelBtnTitle:@"cancel"
+                                               otherBtnTitles:@[@"ok"]
+                                                     callback:^(int buttonIdx) {
+                                                         NSLog(@"buttonIdx = %d", buttonIdx);
+                                                     }];
+    }}];
+    [dataList addObject:@{@"name":@"showProgressDialog", @"func":^(){
+        [[IOSSystemUtil getInstance] showProgressDialogWithMessage:@"Loading..." percent:50];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*5), dispatch_get_main_queue(), ^{
+            [[IOSSystemUtil getInstance] hideProgressDialog];
+        });
+    }}];
+    [dataList addObject:@{@"name":@"showLoading", @"func":^(){
+        [[IOSSystemUtil getInstance] showLoadingWithMessage:@"Loading..."];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*5), dispatch_get_main_queue(), ^{
+            [[IOSSystemUtil getInstance] hideLoading];
+        });
+    }}];
+    [dataList addObject:@{@"name":@"showMessage", @"func":^(){
+        NSString* message = [NSString stringWithFormat:@"%@", [NSDate date]];
+        [[IOSSystemUtil getInstance] showMessage:message];
+    }}];
+    [dataList addObject:@{@"name":@"vibrate", @"func":^(){
+        [[IOSSystemUtil getInstance] vibrate];
+    }}];
+    [dataList addObject:@{@"name":@"saveImage", @"func":^(){
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"close" ofType:@"png"];
+        [[IOSSystemUtil getInstance] saveImage:imagePath
+                                       toAlbum:@"test"
+                                       handler:^(BOOL result, NSString *message) {
+                                           NSLog(@"result = %@, message = %@", NSStringFromBool(result), message);
+                                       }];
+    }}];
+    [dataList addObject:@{@"name":@"sendEmail", @"func":^(){
+        [[IOSSystemUtil getInstance] sendEmailWithSubject:@"subject"
+                                             toRecipients:@[@"xx@xx.com"]
+                                                emailBody:@"emailBody"
+                                                  handler:^(BOOL result, NSString *message) {
+                                                      NSLog(@"result = %@, message = %@", NSStringFromBool(result), message);
+                                                  }];
+    }}];
+    [dataList addObject:@{@"name":@"setNotificationState", @"func":^(){
+        [[IOSSystemUtil getInstance] setNotificationState:YES];
+    }}];
+    [dataList addObject:@{@"name":@"postNotification", @"func":^(){
+        NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
+        [userInfo setObject:@"message" forKey:@"message"];
+        [userInfo setObject:@(5) forKey:@"delay"];
+        [[IOSSystemUtil getInstance] postNotification:userInfo];
+    }}];
+    [dataList addObject:@{@"name":@"share", @"func":^(){
+        NSMutableArray* items = [NSMutableArray array];
+        [items addObject:@"test message"];
+        [[IOSSystemUtil getInstance] share:items];
+    }}];
+    self.dataList = dataList;
 }
 
-- (IBAction)getAppVersion:(id)sender {
-    NSLog(@"%@", [[IOSSystemUtil getInstance] getAppVersion]);
+#pragma mark - UITableViewDataSource
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *cellWithIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellWithIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2
+                                      reuseIdentifier:cellWithIdentifier];
+    }
+    NSDictionary* data = [self.dataList objectAtIndex:[indexPath row]];
+    cell.textLabel.text = [data objectForKey:@"name"];
+    cell.textLabel.textAlignment = NSTextAlignmentLeft;
+    return cell;
 }
 
-- (IBAction)getCountry:(id)sender {
-    NSLog(@"%@", [[IOSSystemUtil getInstance] getCountryCode]);
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.dataList count];
 }
 
-- (IBAction)getLanguage:(id)sender {
-    NSLog(@"%@", [[IOSSystemUtil getInstance] getLanguageCode]);
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary* data = [self.dataList objectAtIndex:[indexPath row]];
+    ((void(^)())[data objectForKey:@"func"])();
 }
 
-- (IBAction)getDeviceName:(id)sender {
-    NSLog(@"%@", [[IOSSystemUtil getInstance] getDeviceName]);
-}
-
-- (IBAction)getSystemVersion:(id)sender {
-    NSLog(@"%@", [[IOSSystemUtil getInstance] getSystemVersion]);
-}
-
-- (IBAction)getCpuTime:(id)sender {
-    NSLog(@"%ld", [[IOSSystemUtil getInstance] getCpuTime]);
-}
-
-- (IBAction)getNetworkState:(id)sender {
-    NSLog(@"%@", [[IOSSystemUtil getInstance] getNetworkState]);
-}
-
-- (IBAction)showChooseDialog:(id)sender {
-    [[IOSSystemUtil getInstance] showChooseDialog:@"title"
-                                                 :@"msg"
-                                                 :@"ok"
-                                                 :@"cancel"
-                                                 :^(BOOL result) {
-                                                     NSLog(@"%@", result?@"YES":@"NO");
-                                                 }];
-}
-
-- (IBAction)showProgressDialog:(id)sender {
-    [[IOSSystemUtil getInstance] showProgressDialog:@"Loading..." :50];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*5), dispatch_get_main_queue(), ^{
-        [[IOSSystemUtil getInstance] hideProgressDialog];
-    });
-}
-
-- (IBAction)showLoading:(id)sender {
-    [[IOSSystemUtil getInstance] showLoading:@"Loading..."];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*5), dispatch_get_main_queue(), ^{
-        [[IOSSystemUtil getInstance] hideLoading];
-    });
-}
-
-- (IBAction)showMessage:(id)sender {
-    NSString* message = [NSString stringWithFormat:@"%@", [NSDate date]];
-    [[IOSSystemUtil getInstance] showMessage:message];
-}
-
-- (IBAction)vibrate:(id)sender {
-    [[IOSSystemUtil getInstance] vibrate];
-}
 
 @end

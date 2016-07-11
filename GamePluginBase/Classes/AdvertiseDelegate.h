@@ -29,6 +29,13 @@
 - (void)hideBannerAd;
 
 /**
+ *  插屏广告是否准备就绪
+ *
+ *  @return 
+ */
+- (BOOL)isSpotAdReady;
+
+/**
  *  显示插屏广告
  *
  *  @param func 插屏广告是否被点击的回调

@@ -21,6 +21,7 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		C3D29D481D2FBAAE00F42185 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = C3D29D471D2FBAAE00F42185 /* close.png */; };
 		E12833C235A951002145223C /* Pods_GamePluginBase_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D227FB60C4E9940822262BD /* Pods_GamePluginBase_Tests.framework */; };
 		EC2B390F19C5A2B6EC148DF0 /* Pods_GamePluginBase_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3B81232B344A46C01A1AD8 /* Pods_GamePluginBase_Example.framework */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		AA3B81232B344A46C01A1AD8 /* Pods_GamePluginBase_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GamePluginBase_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9291E436076B8ED507D1ED5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		C3D29D471D2FBAAE00F42185 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		E787680B0A93D312FE5AB0D2 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,6 +147,7 @@
 		6003F594195388D20070C39A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C3D29D471D2FBAAE00F42185 /* close.png */,
 				6003F595195388D20070C39A /* GamePluginBase-Info.plist */,
 				6003F596195388D20070C39A /* InfoPlist.strings */,
 				6003F599195388D20070C39A /* main.m */,
@@ -200,12 +203,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "GamePluginBase_Example" */;
 			buildPhases = (
+				7CEAB2B16B4F5C59B4C3D8A2 /* 📦 Check Pods Manifest.lock */,
 				EC41DF712FA03AA34AB0D8D6 /* [CP] Check Pods Manifest.lock */,
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
 				1FA81B586F62781A47945DFF /* [CP] Embed Pods Frameworks */,
 				764B66B532CBF86BEDCFABF1 /* [CP] Copy Pods Resources */,
+				F4503AA91EE7E12091507F0F /* 📦 Embed Pods Frameworks */,
+				12AD67A96CD40D1DCAF190A2 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -220,12 +226,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "GamePluginBase_Tests" */;
 			buildPhases = (
+				1CD3CC634B5FA139B76E32B3 /* 📦 Check Pods Manifest.lock */,
 				693E5074F6C52B7FFB1D2E0A /* [CP] Check Pods Manifest.lock */,
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
 				71D7CC9F22950D2C6AB3560A /* [CP] Embed Pods Frameworks */,
 				BBD63EB647ED4D835736D6D8 /* [CP] Copy Pods Resources */,
+				859BE5D3FE620DE3A187216B /* 📦 Embed Pods Frameworks */,
+				166BE6F0B6597385F01E3341 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -276,6 +285,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3D29D481D2FBAAE00F42185 /* close.png in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
@@ -293,6 +303,51 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		12AD67A96CD40D1DCAF190A2 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GamePluginBase_Example/Pods-GamePluginBase_Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		166BE6F0B6597385F01E3341 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GamePluginBase_Tests/Pods-GamePluginBase_Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1CD3CC634B5FA139B76E32B3 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		1FA81B586F62781A47945DFF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -353,6 +408,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GamePluginBase_Example/Pods-GamePluginBase_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7CEAB2B16B4F5C59B4C3D8A2 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		859BE5D3FE620DE3A187216B /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GamePluginBase_Tests/Pods-GamePluginBase_Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BBD63EB647ED4D835736D6D8 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -381,6 +466,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F4503AA91EE7E12091507F0F /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GamePluginBase_Example/Pods-GamePluginBase_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

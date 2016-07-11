@@ -18,7 +18,6 @@
 
 @property(nonatomic, retain)UIWindow* window;
 @property(nonatomic, retain)UIViewController* controller;
-@property(nonatomic, retain)NSString* buildNum;
 
 SINGLETON_DECLARE(IOSSystemUtil)
 
@@ -30,6 +29,20 @@ SINGLETON_DECLARE(IOSSystemUtil)
  *  @return
  */
 - (NSString*)getConfigValueWithKey:(NSString*)key;
+
+/**
+ *  获取bundleId
+ *
+ *  @return
+ */
+- (NSString*)getBundleId;
+
+/**
+ *  获取App名字
+ *
+ *  @return 
+ */
+- (NSString*)getAppName;
 
 /**
  *  获取App的版本号，build
@@ -81,15 +94,20 @@ SINGLETON_DECLARE(IOSSystemUtil)
 - (NSString*)getNetworkState;
 
 /**
- *  显示选择框
+ *  显示弹框
  *
- *  @param title    标题
- *  @param content  内容
- *  @param ok       确定文本
- *  @param cancel   取消文本
- *  @param callback 回调函数
+ *  @param title          标题
+ *  @param message        内容
+ *  @param cancelBtnTitle 关闭按钮
+ *  @param otherBtnTitles 其它按钮
+ *  @param callback       选择回调
  */
-- (void)showChooseDialog:(NSString*)title :(NSString*)content :(NSString*)ok :(NSString*)cancel :(void(^)(BOOL))callback;
+- (void)showAlertDialogWithTitle:(NSString *)title
+                         message:(NSString *)message
+                  cancelBtnTitle:(NSString *)cancelBtnTitle
+                  otherBtnTitles:(NSArray *)otherBtnTitles
+                        callback:(void (^)(int))callback;
+
 
 /**
  *  显示进度弹框
@@ -97,7 +115,7 @@ SINGLETON_DECLARE(IOSSystemUtil)
  *  @param msg
  *  @param percent
  */
-- (void)showProgressDialog:(NSString*)msg :(int)percent;
+- (void)showProgressDialogWithMessage:(NSString*)message percent:(int)percent;
 
 /**
  *  隐藏进度弹框
@@ -109,7 +127,7 @@ SINGLETON_DECLARE(IOSSystemUtil)
  *
  *  @param msg
  */
-- (void)showLoading:(NSString*)msg;
+- (void)showLoadingWithMessage:(NSString*)message;
 
 /**
  *  隐藏loading
@@ -127,5 +145,48 @@ SINGLETON_DECLARE(IOSSystemUtil)
  *  震动
  */
 - (void)vibrate;
+
+/**
+ *  保存图片到相册
+ *
+ *  @param imgPath 图片路径
+ *  @param album   相册名称
+ *  @param block   回调
+ */
+- (void)saveImage:(NSString*)imgPath toAlbum:(NSString*)album handler:(void(^)(BOOL, NSString*))block;
+
+/**
+ *  发送邮件
+ *
+ *  @param subject      主题
+ *  @param toRecipients 收件人数组
+ *  @param emailBody    内容，HTML
+ *  @param callback     回调
+ *
+ *  @return 是否可以发送
+ */
+- (BOOL)sendEmailWithSubject:(NSString*)subject toRecipients:(NSArray*)toRecipients emailBody:(NSString*)emailBody handler:(void(^)(BOOL, NSString*))callback;
+
+/**
+ *  通知开关
+ *
+ *  @param enable
+ */
+- (void)setNotificationState:(BOOL)enable;
+
+/**
+ *  发送通知
+ *
+ *  @param userInfo
+ */
+- (void)postNotification:(NSDictionary *)userInfo;
+
+/**
+ *  分享
+ *
+ *  @param items 分享内容
+ */
+- (void)share:(NSArray*)items;
+
 
 @end
