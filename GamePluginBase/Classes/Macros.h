@@ -30,13 +30,6 @@
 // 布尔类型转换为字符串
 #define NSStringFromBool(b) (b ? @"YES" : @"NO")
 
-// 格式化输出
-#ifdef DEBUG
-#define UA_log( s, ... ) NSLog( @"<%@:%d> %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__,  [NSString stringWithFormat:(s), ##__VA_ARGS__] )
-#else
-#define UA_log( s, ... )
-#endif
-
 // break if
 #define GGBREAK_IF(cond) if (cond) {break;}
 

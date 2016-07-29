@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D4274A7283FD521CFAD40D4 /* libPods-GamePluginBase_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F75A64B7C9B34997F13067E2 /* libPods-GamePluginBase_Example.a */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -21,9 +22,8 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		AED1834E77E9C55BA9BD6B7A /* libPods-GamePluginBase_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C67E9C900AA486D5B619FA17 /* libPods-GamePluginBase_Tests.a */; };
 		C3D29D481D2FBAAE00F42185 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = C3D29D471D2FBAAE00F42185 /* close.png */; };
-		E12833C235A951002145223C /* Pods_GamePluginBase_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D227FB60C4E9940822262BD /* Pods_GamePluginBase_Tests.framework */; };
-		EC2B390F19C5A2B6EC148DF0 /* Pods_GamePluginBase_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3B81232B344A46C01A1AD8 /* Pods_GamePluginBase_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,13 +60,13 @@
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		6A12BEEFF851D2609FD0E10E /* Pods-GamePluginBase_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GamePluginBase_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-GamePluginBase_Example/Pods-GamePluginBase_Example.release.xcconfig"; sourceTree = "<group>"; };
-		6D227FB60C4E9940822262BD /* Pods_GamePluginBase_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GamePluginBase_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E0A162B8141AAD5D5A9C6B2 /* GamePluginBase.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = GamePluginBase.podspec; path = ../GamePluginBase.podspec; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		AA3B81232B344A46C01A1AD8 /* Pods_GamePluginBase_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GamePluginBase_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9291E436076B8ED507D1ED5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		C3D29D471D2FBAAE00F42185 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		C67E9C900AA486D5B619FA17 /* libPods-GamePluginBase_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GamePluginBase_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E787680B0A93D312FE5AB0D2 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		F75A64B7C9B34997F13067E2 /* libPods-GamePluginBase_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GamePluginBase_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +77,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				EC2B390F19C5A2B6EC148DF0 /* Pods_GamePluginBase_Example.framework in Frameworks */,
+				3D4274A7283FD521CFAD40D4 /* libPods-GamePluginBase_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +88,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				E12833C235A951002145223C /* Pods_GamePluginBase_Tests.framework in Frameworks */,
+				AED1834E77E9C55BA9BD6B7A /* libPods-GamePluginBase_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,8 +123,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				AA3B81232B344A46C01A1AD8 /* Pods_GamePluginBase_Example.framework */,
-				6D227FB60C4E9940822262BD /* Pods_GamePluginBase_Tests.framework */,
+				F75A64B7C9B34997F13067E2 /* libPods-GamePluginBase_Example.a */,
+				C67E9C900AA486D5B619FA17 /* libPods-GamePluginBase_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
