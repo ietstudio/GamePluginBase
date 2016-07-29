@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GamePluginBase'
-  s.version          = '0.1.8'
+  s.version          = '0.1.9'
   s.summary          = 'GamePluginBase'
 
 # This description is used to generate tags and improve search results.
@@ -44,5 +44,6 @@ GamePluginBase.
   s.dependency 'Reachability', '~> 3.2'
   s.dependency 'MBProgressHUD', '~> 0.9.1'
   s.dependency 'ALAssetsLibrary-CustomPhotoAlbum', '~> 1.3.0'
+  s.dependency 'NSLogger', '~> 1.7.0'
 
 end

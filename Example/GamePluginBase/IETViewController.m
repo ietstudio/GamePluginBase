@@ -137,12 +137,11 @@
     NSString *cellWithIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellWithIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:cellWithIdentifier];
     }
     NSDictionary* data = [self.dataList objectAtIndex:[indexPath row]];
     cell.textLabel.text = [data objectForKey:@"name"];
-    cell.textLabel.textAlignment = NSTextAlignmentLeft;
     return cell;
 }
 

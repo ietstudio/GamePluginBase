@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "Macros.h"
+#if DEBUG
+#define NSLog(s, ...) NSLog( @"<%@:%@:%d> %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], [NSString stringWithUTF8String:__FUNCTION__], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#else
+#import <NSLogger/NSLogger.h>
+#endif
 
 // 配置信息
 #define IETCONFIGS_KEY                      @"IETConfigs"
