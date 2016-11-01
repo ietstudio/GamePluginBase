@@ -88,6 +88,15 @@
  */
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo;
 
+
+/**
+ Description
+
+ @param application  application description
+ @param notification notification description
+ */
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification;
+
 /**
  *
  *

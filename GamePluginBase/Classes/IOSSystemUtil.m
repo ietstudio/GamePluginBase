@@ -302,6 +302,7 @@ SINGLETON_DEFINITION(IOSSystemUtil)
     [localNotification setFireDate:[NSDate dateWithTimeIntervalSinceNow:delay]];
     [localNotification setSoundName:sound];
     [localNotification setApplicationIconBadgeNumber:badge];
+    [localNotification setUserInfo:userInfo];
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
 
