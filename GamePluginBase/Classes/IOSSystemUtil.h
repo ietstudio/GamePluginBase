@@ -194,4 +194,21 @@ SINGLETON_DECLARE(IOSSystemUtil)
 - (void)share:(NSArray*)items;
 
 
+/**
+ 存储key-value到keychain
+
+ @param key
+ @param value
+ */
+- (void)keychainSet:(NSString*)key withValue:(NSString*)value;
+
+
+/**
+ 从keychain获取key对应的value
+
+ @param key
+ @return 
+ */
+- (NSString*)keychainGetValueForKey:(NSString*)key;
+
 @end

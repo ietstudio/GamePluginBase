@@ -127,6 +127,17 @@
         [items addObject:@"test message"];
         [[IOSSystemUtil getInstance] share:items];
     }}];
+    [dataList addObject:@{@"name":@"keychainSet", @"func":^(){
+        [[IOSSystemUtil getInstance] keychainSet:@"key" withValue:@"value"];
+    }}];
+    [dataList addObject:@{@"name":@"keychainGet", @"func":^(){
+        NSString* value = [[IOSSystemUtil getInstance] keychainGetValueForKey:@"key"];
+        if (value == nil) {
+            NSLog(@"nil");
+        } else {
+            NSLog(value);
+        }
+    }}];
     self.dataList = dataList;
 }
 

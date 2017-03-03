@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GamePluginBase'
-  s.version          = '0.2.2'
+  s.version          = '0.2.3'
   s.summary          = 'GamePluginBase'
 
 # This description is used to generate tags and improve search results.
@@ -24,7 +24,7 @@ GamePluginBase.
   s.homepage         = 'https://github.com/ietstudio/GamePluginBase'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'gaoyang' => 'gaoyang@joycastle.mobi' }
+  s.author           = { 'gaoyang' => 'geekgaoyang@gmail.com' }
   s.source           = { :git => 'https://github.com/ietstudio/GamePluginBase.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
@@ -45,5 +45,6 @@ GamePluginBase.
   s.dependency 'MBProgressHUD', '~> 0.9.1'
   s.dependency 'ALAssetsLibrary-CustomPhotoAlbum', '~> 1.3.0'
   s.dependency 'NSLogger', '~> 1.5.1'
+  s.dependency 'UICKeyChainStore'
 
 end

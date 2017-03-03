@@ -18,6 +18,7 @@
 #import "ALAssetsLibrary+CustomPhotoAlbum.h"
 #import "MBProgressHUD.h"
 #import "Reachability.h"
+#import "UICKeyChainStore.h"
 
 @interface IOSSystemUtil() <MFMailComposeViewControllerDelegate>
 
@@ -309,6 +310,16 @@ SINGLETON_DEFINITION(IOSSystemUtil)
 - (void)share:(NSArray *)items {
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
     [self.controller presentViewController:activityController animated:YES completion:nil];
+}
+
+- (void)keychainSet:(NSString *)key withValue:(NSString *)value {
+    UICKeyChainStore *keychain = [UICKeyChainStore keyChainStoreWithService:[self getBundleId]];
+    keychain[key] = value;
+}
+
+- (NSString *)keychainGetValueForKey:(NSString *)key {
+    UICKeyChainStore *keychain = [UICKeyChainStore keyChainStoreWithService:[self getBundleId]];
+    return keychain[key];
 }
 
 #pragma mark - MFMailComposeViewControllerDelegate

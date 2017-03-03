@@ -203,7 +203,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "GamePluginBase_Example" */;
 			buildPhases = (
-				7CEAB2B16B4F5C59B4C3D8A2 /* 📦 Check Pods Manifest.lock */,
+				7CEAB2B16B4F5C59B4C3D8A2 /* [CP] Check Pods Manifest.lock */,
 				EC41DF712FA03AA34AB0D8D6 /* [CP] Check Pods Manifest.lock */,
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
@@ -226,7 +226,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "GamePluginBase_Tests" */;
 			buildPhases = (
-				1CD3CC634B5FA139B76E32B3 /* 📦 Check Pods Manifest.lock */,
+				1CD3CC634B5FA139B76E32B3 /* [CP] Check Pods Manifest.lock */,
 				693E5074F6C52B7FFB1D2E0A /* [CP] Check Pods Manifest.lock */,
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
@@ -256,6 +256,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = gaoyang;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = MHC5UD4DS5;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -333,19 +336,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GamePluginBase_Tests/Pods-GamePluginBase_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1CD3CC634B5FA139B76E32B3 /* 📦 Check Pods Manifest.lock */ = {
+		1CD3CC634B5FA139B76E32B3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		1FA81B586F62781A47945DFF /* [CP] Embed Pods Frameworks */ = {
@@ -408,19 +411,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GamePluginBase_Example/Pods-GamePluginBase_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7CEAB2B16B4F5C59B4C3D8A2 /* 📦 Check Pods Manifest.lock */ = {
+		7CEAB2B16B4F5C59B4C3D8A2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		859BE5D3FE620DE3A187216B /* 📦 Embed Pods Frameworks */ = {
@@ -613,11 +616,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = MHC5UD4DS5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GamePluginBase/GamePluginBase-Prefix.pch";
 				INFOPLIST_FILE = "GamePluginBase/GamePluginBase-Info.plist";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gameplugin.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -629,11 +633,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = MHC5UD4DS5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GamePluginBase/GamePluginBase-Prefix.pch";
 				INFOPLIST_FILE = "GamePluginBase/GamePluginBase-Info.plist";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gameplugin.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
