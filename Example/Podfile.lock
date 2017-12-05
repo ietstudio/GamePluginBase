@@ -15,7 +15,7 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
-  - GamePluginBase (0.2.3):
+  - GamePluginBase (0.2.4):
     - ALAssetsLibrary-CustomPhotoAlbum (~> 1.3.0)
     - BlocksKit (~> 2.2.5)
     - MBProgressHUD (~> 0.9.1)
@@ -34,17 +34,17 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   GamePluginBase:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
   ALAssetsLibrary-CustomPhotoAlbum: 299ea3f58e988b453b19c595859354e562814c93
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
-  GamePluginBase: f32433f0cb340b86a0330a73df3f9595724533f7
+  GamePluginBase: e1c5855de284e7626aae2739096e901dcf188b21
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
-PODFILE CHECKSUM: ae9deef8190d33446cd16100fc79345f3df0988e
+PODFILE CHECKSUM: 1b14f6423b8992b15612ed718106bfa268e201d3
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.1

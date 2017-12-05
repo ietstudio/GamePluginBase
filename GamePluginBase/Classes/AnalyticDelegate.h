@@ -60,6 +60,14 @@
  */
 - (void)charge:(NSString*)name :(double)cash :(double)coin :(int)type;
 
+
+/**
+ *  充值：
+ *
+ *  @param transaction
+ */
+- (void)charge:(SKPaymentTransaction*)transaction;
+
 /**
  *  奖励: reward(1000, 1)->奖励了1000金币，原因是1
  *
