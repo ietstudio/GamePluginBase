@@ -8,8 +8,11 @@
 
 #import "IETViewController.h"
 #import "IOSSystemUtil.h"
+#import "LifeCycleDelegate.h"
+#import "AdvertiseDelegate.h"
+#import "AnalyticDelegate.h"
 
-@interface IETViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface IETViewController () <UITableViewDataSource, UITableViewDelegate, LifeCycleDelegate, AdvertiseDelegate, AnalyticDelegate>
 
 @property (retain, nonatomic) UITableView *tableView;
 
