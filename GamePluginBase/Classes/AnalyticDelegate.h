@@ -65,7 +65,7 @@
 /**
  *  充值：
  *
- *  @param transaction
+ *  @param transaction 订单
  */
 - (void)charge:(SKPaymentTransaction*)transaction;
 
@@ -116,5 +116,12 @@
  *  @param reason    失败原因
  */
 - (void)missionFailed:(NSString*)missionId because:(NSString*)reason;
+
+/**
+ 获取名字
+ 
+ @return 名字
+ */
+- (NSString*)getName;
 
 @end

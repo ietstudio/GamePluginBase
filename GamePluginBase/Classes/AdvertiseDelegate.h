@@ -65,7 +65,7 @@
 /**
  *  返回名称
  *
- *  @return 
+ *  @return 名称
  */
 - (NSString*)getName;
 

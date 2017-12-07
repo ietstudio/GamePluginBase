@@ -29,72 +29,72 @@ SINGLETON_DECLARE(IOSSystemUtil)
 /**
  *  获取info.plist中的配置信息
  *
- *  @param key
+ *  @param key key
  *
- *  @return
+ *  @return value
  */
 - (NSString*)getConfigValueWithKey:(NSString*)key;
 
 /**
  *  获取bundleId
  *
- *  @return
+ *  @return bundleId
  */
 - (NSString*)getBundleId;
 
 /**
  *  获取App名字
  *
- *  @return 
+ *  @return 名字
  */
 - (NSString*)getAppName;
 
 /**
  *  获取App的版本号，build
  *
- *  @return
+ *  @return build
  */
 - (NSString*)getAppVersion;
 
 /**
  *  获取国家代码
  *
- *  @return
+ *  @return 国家代码
  */
 - (NSString*)getCountryCode;
 
 /**
  *  获取语言代码
  *
- *  @return
+ *  @return 语言代码
  */
 - (NSString*)getLanguageCode;
 
 /**
  *  获取设备名称
  *
- *  @return
+ *  @return 设备名称
  */
 - (NSString*)getDeviceName;
 
 /**
  *  获取系统版本
  *
- *  @return
+ *  @return 系统版本
  */
 - (NSString*)getSystemVersion;
 
 /**
  *  获取CPU时间
  *
- *  @return
+ *  @return cpu时间
  */
 - (time_t)getCpuTime;
 
 /**
  *  获取当前的网络状态
  *
- *  @return
+ *  @return 网络状态
  */
 - (NSString*)getNetworkState;
 
@@ -117,8 +117,8 @@ SINGLETON_DECLARE(IOSSystemUtil)
 /**
  *  显示进度弹框
  *
- *  @param msg
- *  @param percent
+ *  @param message  消息
+ *  @param percent  百分比
  */
 - (void)showProgressDialogWithMessage:(NSString*)message percent:(int)percent;
 
@@ -130,7 +130,7 @@ SINGLETON_DECLARE(IOSSystemUtil)
 /**
  *  显示loading
  *
- *  @param msg
+ *  @param message      消息
  */
 - (void)showLoadingWithMessage:(NSString*)message;
 
@@ -142,7 +142,7 @@ SINGLETON_DECLARE(IOSSystemUtil)
 /**
  *  显示通知
  *
- *  @param message
+ *  @param message      消息
  */
 - (void)showMessage:(NSString*)message;
 
@@ -175,14 +175,14 @@ SINGLETON_DECLARE(IOSSystemUtil)
 /**
  *  通知开关
  *
- *  @param enable
+ *  @param enable   开关
  */
 - (void)setNotificationState:(BOOL)enable;
 
 /**
  *  发送通知
  *
- *  @param userInfo
+ *  @param userInfo     通知参数
  */
 - (void)postNotification:(NSDictionary *)userInfo;
 
@@ -197,8 +197,8 @@ SINGLETON_DECLARE(IOSSystemUtil)
 /**
  存储key-value到keychain
 
- @param key
- @param value
+ @param key         key
+ @param value       value
  */
 - (void)keychainSet:(NSString*)key withValue:(NSString*)value;
 
@@ -206,8 +206,8 @@ SINGLETON_DECLARE(IOSSystemUtil)
 /**
  从keychain获取key对应的value
 
- @param key
- @return 
+ @param key         key
+ @return value
  */
 - (NSString*)keychainGetValueForKey:(NSString*)key;
 
