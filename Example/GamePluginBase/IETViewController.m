@@ -8,13 +8,10 @@
 
 #import "IETViewController.h"
 #import "IOSSystemUtil.h"
-#import "LifeCycleDelegate.h"
 #import "AdvertiseDelegate.h"
 #import "AnalyticDelegate.h"
 
-@interface IETViewController () <UITableViewDataSource, UITableViewDelegate, LifeCycleDelegate, AdvertiseDelegate, AnalyticDelegate>
-
-@property (retain, nonatomic) UITableView *tableView;
+@interface IETViewController () <UITableViewDataSource, UITableViewDelegate, AdvertiseDelegate, AnalyticDelegate>
 
 @property (retain, nonatomic) NSArray* dataList;
 
@@ -27,11 +24,12 @@
     [super viewDidLoad];
     
     [self initDataList];
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame
-                                                  style:UITableViewStylePlain];
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    [self.view addSubview:self.tableView];
+    [self initNotify];
+    
+    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    tableView.dataSource = self;
+    tableView.delegate = self;
+    [self.view addSubview:tableView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,8 +43,8 @@
     [dataList addObject:@{@"name":@"getConfigValueWithKey", @"func":^(){
         NSLog(@"%@", [[IOSSystemUtil getInstance] getConfigValueWithKey:@"MyKey"]);
     }}];
-    [dataList addObject:@{@"name":@"getBundleId", @"func":^(){
-        NSLog(@"%@", [[IOSSystemUtil getInstance] getBundleId]);
+    [dataList addObject:@{@"name":@"getAppBundleId", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] getAppBundleId]);
     }}];
     [dataList addObject:@{@"name":@"getAppName", @"func":^(){
         NSLog(@"%@", [[IOSSystemUtil getInstance] getAppName]);
@@ -54,17 +52,35 @@
     [dataList addObject:@{@"name":@"getAppVersion", @"func":^(){
         NSLog(@"%@", [[IOSSystemUtil getInstance] getAppVersion]);
     }}];
+    [dataList addObject:@{@"name":@"getAppBuild", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] getAppBuild]);
+    }}];
+    [dataList addObject:@{@"name":@"getDeviceName", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] getDeviceName]);
+    }}];
+    [dataList addObject:@{@"name":@"getDeviceModel", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] getDeviceModel]);
+    }}];
+    [dataList addObject:@{@"name":@"getDeviceType", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] getDeviceType]);
+    }}];
+    [dataList addObject:@{@"name":@"getSystemName", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] getSystemName]);
+    }}];
+    [dataList addObject:@{@"name":@"getSystemVersion", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] getSystemVersion]);
+    }}];
+    [dataList addObject:@{@"name":@"getIdfv", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] getIdfv]);
+    }}];
+    [dataList addObject:@{@"name":@"getIdfa", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] getIdfa]);
+    }}];
     [dataList addObject:@{@"name":@"getCountryCode", @"func":^(){
         NSLog(@"%@", [[IOSSystemUtil getInstance] getCountryCode]);
     }}];
     [dataList addObject:@{@"name":@"getLanguageCode", @"func":^(){
         NSLog(@"%@", [[IOSSystemUtil getInstance] getLanguageCode]);
-    }}];
-    [dataList addObject:@{@"name":@"getDeviceName", @"func":^(){
-        NSLog(@"%@", [[IOSSystemUtil getInstance] getDeviceName]);
-    }}];
-    [dataList addObject:@{@"name":@"getSystemVersion", @"func":^(){
-        NSLog(@"%@", [[IOSSystemUtil getInstance] getSystemVersion]);
     }}];
     [dataList addObject:@{@"name":@"getCpuTime", @"func":^(){
         NSLog(@"%ld", [[IOSSystemUtil getInstance] getCpuTime]);
@@ -142,6 +158,17 @@
         }
     }}];
     self.dataList = dataList;
+}
+
+- (void)initNotify {
+    [[NSNotificationCenter defaultCenter] addObserverForName:IETNetworkStateChangedNtf
+                                                      object:nil
+                                                       queue:[NSOperationQueue mainQueue]
+                                                  usingBlock:^(NSNotification * _Nonnull note) {
+                                                      NSLog(@"%@", note.userInfo);
+                                                      NSString* message = [NSString stringWithFormat:@"%@", [note.userInfo objectForKey:@"state"]];
+                                                      [[IOSSystemUtil getInstance] showMessage:message];
+                                                  }];
 }
 
 #pragma mark - UITableViewDataSource

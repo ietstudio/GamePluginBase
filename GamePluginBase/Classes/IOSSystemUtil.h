@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MessageUI/MessageUI.h>
 #import "Macros.h"
+
 #if DEBUG
 #define NSLog(s, ...) NSLog( @"<%@:%@:%d> %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], [NSString stringWithUTF8String:__FUNCTION__], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 #else
@@ -16,10 +18,11 @@
 
 // 配置信息
 #define IETCONFIGS_KEY                      @"IETConfigs"
-// Apple ID
-#define APPLE_ID                            @"Apple_ID"
 
-@interface IOSSystemUtil : NSObject
+// 网络状态变化通知
+#define IETNetworkStateChangedNtf           @"IETNetworkStateChangedNtf"
+
+@interface IOSSystemUtil : NSObject <MFMailComposeViewControllerDelegate>
 
 @property(nonatomic, retain)UIWindow* window;
 @property(nonatomic, retain)UIViewController* controller;
@@ -40,7 +43,7 @@ SINGLETON_DECLARE(IOSSystemUtil)
  *
  *  @return bundleId
  */
-- (NSString*)getBundleId;
+- (NSString*)getAppBundleId;
 
 /**
  *  获取App名字
@@ -50,11 +53,70 @@ SINGLETON_DECLARE(IOSSystemUtil)
 - (NSString*)getAppName;
 
 /**
- *  获取App的版本号，build
+ *  获取App的version
  *
- *  @return build
+ *  @return version
  */
 - (NSString*)getAppVersion;
+
+
+/**
+ 获取App的build
+
+ @return build
+ */
+- (NSString*)getAppBuild;
+
+
+/**
+ 获取设置的本机名称
+
+ @return 本机名称
+ */
+- (NSString*)getDeviceName;
+
+/**
+ 获取设备种类
+
+ @return 设备种类
+ */
+- (NSString*)getDeviceModel;
+
+/**
+ *  获取设备型号
+ *
+ *  @return 设备型号
+ */
+- (NSString*)getDeviceType;
+
+/**
+ 获取系统名称
+
+ @return 系统名称
+ */
+- (NSString*)getSystemName;
+
+
+/**
+ 获取系统版本
+
+ @return 系统版本
+ */
+- (NSString*)getSystemVersion;
+
+/**
+ 获取idfv标识符
+
+ @return idfv标识符
+ */
+- (NSString*)getIdfv;
+
+/**
+ 获取idfa标识符
+
+ @return idfa标识符
+ */
+- (NSString*)getIdfa;
 
 /**
  *  获取国家代码
@@ -69,20 +131,6 @@ SINGLETON_DECLARE(IOSSystemUtil)
  *  @return 语言代码
  */
 - (NSString*)getLanguageCode;
-
-/**
- *  获取设备名称
- *
- *  @return 设备名称
- */
-- (NSString*)getDeviceName;
-
-/**
- *  获取系统版本
- *
- *  @return 系统版本
- */
-- (NSString*)getSystemVersion;
 
 /**
  *  获取CPU时间
@@ -166,11 +214,11 @@ SINGLETON_DECLARE(IOSSystemUtil)
  *  @param subject      主题
  *  @param toRecipients 收件人数组
  *  @param emailBody    内容，HTML
- *  @param callback     回调
+ *  @param handler      回调
  *
  *  @return 是否可以发送
  */
-- (BOOL)sendEmailWithSubject:(NSString*)subject toRecipients:(NSArray*)toRecipients emailBody:(NSString*)emailBody handler:(void(^)(BOOL, NSString*))callback;
+- (BOOL)sendEmailWithSubject:(NSString*)subject toRecipients:(NSArray*)toRecipients emailBody:(NSString*)emailBody handler:(void(^)(BOOL, NSString*))handler;
 
 /**
  *  通知开关
@@ -185,6 +233,13 @@ SINGLETON_DECLARE(IOSSystemUtil)
  *  @param userInfo     通知参数
  */
 - (void)postNotification:(NSDictionary *)userInfo;
+
+/**
+ 设置图标角标
+
+ @param num 角标数字
+ */
+- (void)setBadgeNum:(NSInteger)num;
 
 /**
  *  分享

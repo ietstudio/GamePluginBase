@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LifeCycleDelegate.h"
 
 #define ADVERTISE_RETRY_INTERVAL 15
 
-@protocol AdvertiseDelegate <LifeCycleDelegate>
+@protocol AdvertiseDelegate <UIApplicationDelegate>
 
 @optional
 

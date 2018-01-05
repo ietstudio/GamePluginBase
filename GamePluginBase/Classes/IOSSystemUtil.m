@@ -9,7 +9,8 @@
 #import "IOSSystemUtil.h"
 
 #import <AudioToolbox/AudioToolbox.h>
-#import <MessageUI/MessageUI.h>
+#import <UIKit/UIKit.h>
+#import <AdSupport/ASIdentifierManager.h>
 
 #include <sys/sysctl.h>
 #include <sys/utsname.h>
@@ -20,17 +21,13 @@
 #import "Reachability.h"
 #import "UICKeyChainStore.h"
 
-@interface IOSSystemUtil() <MFMailComposeViewControllerDelegate>
-
-@end
-
 @implementation IOSSystemUtil
 {
     Reachability* _reachability;
     MBProgressHUD* _progressHud;
     MBProgressHUD* _loadingHud;
     MBProgressHUD* _messageHud;
-    void (^_emailCallFunc)(BOOL, NSString*);
+    void (^_emailHandler)(BOOL, NSString*);
 }
 
 SINGLETON_DEFINITION(IOSSystemUtil)
@@ -38,36 +35,20 @@ SINGLETON_DEFINITION(IOSSystemUtil)
 - (instancetype)init {
     if (self = [super init]) {
         // 网络状态变化
-        NSString* hostName;
-        if ([[self getCountryCode] isEqualToString:@"CN"]) {
-            hostName = @"www.baidu.com";
-        } else {
-            hostName = @"www.google.com";
-        }
-        __block IOSSystemUtil* systemUtil = self;
+        NSString* hostName = [[self getCountryCode] isEqualToString:@"CN"] ? @"www.baidu.com" : @"www.google.com";
         _reachability = [Reachability reachabilityWithHostName:hostName];
-        _reachability.reachableBlock = ^(Reachability*reach) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [systemUtil networkConnect];
-            });
-        };
-        _reachability.unreachableBlock = ^(Reachability*reach) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [systemUtil networkDisconnect];
-            });
-        };
+        [[NSNotificationCenter defaultCenter] addObserverForName:kReachabilityChangedNotification
+                                                          object:nil
+                                                           queue:[NSOperationQueue mainQueue]
+                                                      usingBlock:^(NSNotification * _Nonnull note) {
+                                                          NetworkStatus state = [_reachability currentReachabilityStatus];
+                                                          NSDictionary* userInfo = @{@"state": @(state)};
+                                                          [[NSNotificationCenter defaultCenter] postNotificationName:IETNetworkStateChangedNtf object:nil userInfo:userInfo];
+                                                      }];
         [_reachability startNotifier];
         return self;
     }
     return nil;
-}
-
-- (void)networkDisconnect {
-    NSLog(@"access internet failed");
-}
-
-- (void)networkConnect {
-    NSLog(@"access internet success");
 }
 
 - (NSString *)getConfigValueWithKey:(NSString *)key {
@@ -75,7 +56,7 @@ SINGLETON_DEFINITION(IOSSystemUtil)
     return [configs objectForKey:key];
 }
 
-- (NSString *)getBundleId {
+- (NSString *)getAppBundleId {
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
 }
 
@@ -84,7 +65,42 @@ SINGLETON_DEFINITION(IOSSystemUtil)
 }
 
 - (NSString *)getAppVersion {
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+}
+
+- (NSString *)getAppBuild {
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+}
+
+- (NSString *)getDeviceName {
+    return [[UIDevice currentDevice] name];
+}
+
+- (NSString *)getDeviceModel {
+    return [[UIDevice currentDevice] localizedModel];
+}
+
+- (NSString *)getDeviceType {
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    return [NSString stringWithCString:systemInfo.machine
+                              encoding:NSUTF8StringEncoding];
+}
+
+- (NSString *)getSystemName {
+    return [[UIDevice currentDevice] systemName];
+}
+
+- (NSString *)getSystemVersion {
+    return [[UIDevice currentDevice] systemVersion];
+}
+
+- (NSString *)getIdfv {
+    return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+}
+
+- (NSString *)getIdfa {
+    return [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
 }
 
 - (NSString *)getCountryCode {
@@ -101,17 +117,6 @@ SINGLETON_DEFINITION(IOSSystemUtil)
         language = [[NSLocale systemLocale] objectForKey:NSLocaleLanguageCode];
     }
     return language;
-}
-
-- (NSString *)getDeviceName {
-    struct utsname systemInfo;
-    uname(&systemInfo);
-    return [NSString stringWithCString:systemInfo.machine
-                              encoding:NSUTF8StringEncoding];
-}
-
-- (NSString *)getSystemVersion {
-    return [UIDevice currentDevice].systemVersion;
 }
 
 - (time_t)getCpuTime {
@@ -222,12 +227,12 @@ SINGLETON_DEFINITION(IOSSystemUtil)
 - (BOOL)sendEmailWithSubject:(NSString *)subject
                 toRecipients:(NSArray *)toRecipients
                    emailBody:(NSString *)emailBody
-                     handler:(void (^)(BOOL, NSString *))callback {
+                     handler:(void (^)(BOOL, NSString *))handler {
     if (![MFMailComposeViewController canSendMail]) {
         return NO;
     };
-    if (_emailCallFunc == nil) {
-        _emailCallFunc = callback;
+    if (_emailHandler == nil) {
+        _emailHandler = handler;
         MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
         controller.mailComposeDelegate = self;
         [controller setSubject: subject];//设置主题
@@ -307,18 +312,22 @@ SINGLETON_DEFINITION(IOSSystemUtil)
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
 
+- (void)setBadgeNum:(NSInteger)num {
+    [UIApplication sharedApplication].applicationIconBadgeNumber = num;
+}
+
 - (void)share:(NSArray *)items {
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
     [self.controller presentViewController:activityController animated:YES completion:nil];
 }
 
 - (void)keychainSet:(NSString *)key withValue:(NSString *)value {
-    UICKeyChainStore *keychain = [UICKeyChainStore keyChainStoreWithService:[self getBundleId]];
+    UICKeyChainStore *keychain = [UICKeyChainStore keyChainStoreWithService:[self getAppBundleId]];
     keychain[key] = value;
 }
 
 - (NSString *)keychainGetValueForKey:(NSString *)key {
-    UICKeyChainStore *keychain = [UICKeyChainStore keyChainStoreWithService:[self getBundleId]];
+    UICKeyChainStore *keychain = [UICKeyChainStore keyChainStoreWithService:[self getAppBundleId]];
     return keychain[key];
 }
 
@@ -349,8 +358,8 @@ SINGLETON_DEFINITION(IOSSystemUtil)
             break;
     }
     NSLog(@"%@", msg);
-    _emailCallFunc(success, msg);
-    _emailCallFunc = nil;
+    _emailHandler(success, msg);
+    _emailHandler = nil;
 }
 
 @end

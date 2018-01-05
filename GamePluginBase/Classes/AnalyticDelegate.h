@@ -8,9 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <StoreKit/StoreKit.h>
-#import "LifeCycleDelegate.h"
 
-@protocol AnalyticDelegate <LifeCycleDelegate>
+@protocol AnalyticDelegate <UIApplicationDelegate>
 
 @optional
 
