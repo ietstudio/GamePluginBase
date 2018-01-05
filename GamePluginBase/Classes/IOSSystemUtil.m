@@ -17,9 +17,12 @@
 
 #import "BlocksKit/BlocksKit+UIKit.h"
 #import "ALAssetsLibrary+CustomPhotoAlbum.h"
+#import "UIDevice+FCUUID.h"
+
 #import "MBProgressHUD.h"
 #import "Reachability.h"
 #import "UICKeyChainStore.h"
+#import "JailbrokenDetector.h"
 
 @implementation IOSSystemUtil
 {
@@ -95,12 +98,16 @@ SINGLETON_DEFINITION(IOSSystemUtil)
     return [[UIDevice currentDevice] systemVersion];
 }
 
-- (NSString *)getIdfv {
+- (NSString *)getIDFV {
     return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 }
 
-- (NSString *)getIdfa {
+- (NSString *)getIDFA {
     return [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+}
+
+- (NSString *)getUUID {
+    return [[UIDevice currentDevice] uuid];
 }
 
 - (NSString *)getCountryCode {
@@ -329,6 +336,10 @@ SINGLETON_DEFINITION(IOSSystemUtil)
 - (NSString *)keychainGetValueForKey:(NSString *)key {
     UICKeyChainStore *keychain = [UICKeyChainStore keyChainStoreWithService:[self getAppBundleId]];
     return keychain[key];
+}
+
+- (BOOL)isJailbroken {
+    return [JailbrokenDetector isDeviceJailbroken];
 }
 
 #pragma mark - MFMailComposeViewControllerDelegate

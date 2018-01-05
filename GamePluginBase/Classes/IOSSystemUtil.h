@@ -59,14 +59,12 @@ SINGLETON_DECLARE(IOSSystemUtil)
  */
 - (NSString*)getAppVersion;
 
-
 /**
  获取App的build
 
  @return build
  */
 - (NSString*)getAppBuild;
-
 
 /**
  获取设置的本机名称
@@ -96,7 +94,6 @@ SINGLETON_DECLARE(IOSSystemUtil)
  */
 - (NSString*)getSystemName;
 
-
 /**
  获取系统版本
 
@@ -109,14 +106,21 @@ SINGLETON_DECLARE(IOSSystemUtil)
 
  @return idfv标识符
  */
-- (NSString*)getIdfv;
+- (NSString*)getIDFV;
 
 /**
  获取idfa标识符
 
  @return idfa标识符
  */
-- (NSString*)getIdfa;
+- (NSString*)getIDFA;
+
+/**
+ 获取uuid标识符
+
+ @return uuid标识符
+ */
+- (NSString*)getUUID;
 
 /**
  *  获取国家代码
@@ -160,7 +164,6 @@ SINGLETON_DECLARE(IOSSystemUtil)
                   cancelBtnTitle:(NSString *)cancelBtnTitle
                   otherBtnTitles:(NSArray *)otherBtnTitles
                         callback:(void (^)(int))callback;
-
 
 /**
  *  显示进度弹框
@@ -248,7 +251,6 @@ SINGLETON_DECLARE(IOSSystemUtil)
  */
 - (void)share:(NSArray*)items;
 
-
 /**
  存储key-value到keychain
 
@@ -265,5 +267,12 @@ SINGLETON_DECLARE(IOSSystemUtil)
  @return value
  */
 - (NSString*)keychainGetValueForKey:(NSString*)key;
+
+/**
+ 检测设备是否是越狱设备
+
+ @return 是否越狱
+ */
+- (BOOL)isJailbroken;
 
 @end

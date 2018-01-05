@@ -70,11 +70,14 @@
     [dataList addObject:@{@"name":@"getSystemVersion", @"func":^(){
         NSLog(@"%@", [[IOSSystemUtil getInstance] getSystemVersion]);
     }}];
-    [dataList addObject:@{@"name":@"getIdfv", @"func":^(){
-        NSLog(@"%@", [[IOSSystemUtil getInstance] getIdfv]);
+    [dataList addObject:@{@"name":@"getIDFV", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] getIDFV]);
     }}];
-    [dataList addObject:@{@"name":@"getIdfa", @"func":^(){
-        NSLog(@"%@", [[IOSSystemUtil getInstance] getIdfa]);
+    [dataList addObject:@{@"name":@"getIDFA", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] getIDFA]);
+    }}];
+    [dataList addObject:@{@"name":@"getUUID", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] getUUID]);
     }}];
     [dataList addObject:@{@"name":@"getCountryCode", @"func":^(){
         NSLog(@"%@", [[IOSSystemUtil getInstance] getCountryCode]);
@@ -156,6 +159,9 @@
         } else {
             NSLog(value);
         }
+    }}];
+    [dataList addObject:@{@"name":@"isJailbroken", @"func":^(){
+        NSLog(@"%@", NSStringFromBool([[IOSSystemUtil getInstance] isJailbroken]));
     }}];
     self.dataList = dataList;
 }
