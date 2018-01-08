@@ -16,7 +16,7 @@
 /**
  *  设置账户信息
  *
- *  @param dict 
+ *  @param dict 账户信息
  */
 - (void)setAccoutInfo:(NSDictionary*)dict;
 
