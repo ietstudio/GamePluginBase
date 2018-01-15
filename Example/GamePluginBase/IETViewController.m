@@ -163,6 +163,14 @@
     [dataList addObject:@{@"name":@"isJailbroken", @"func":^(){
         NSLog(@"%@", NSStringFromBool([[IOSSystemUtil getInstance] isJailbroken]));
     }}];
+    [dataList addObject:@{@"name":@"saveToPasteboard", @"func":^(){
+        [[IOSSystemUtil getInstance] saveToPasteboard:@"test content"];
+    }}];
+    [dataList addObject:@{@"name":@"sendRequest", @"func":^(){
+        [[IOSSystemUtil getInstance] sendRequest:@"get" url:@"" data:nil handler:^(BOOL result, NSString *resp) {
+            NSLog(@"result = %@, message = %@", NSStringFromBool(result), resp);
+        }];
+    }}];
     self.dataList = dataList;
 }
 

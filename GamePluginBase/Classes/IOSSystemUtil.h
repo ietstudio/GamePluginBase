@@ -275,4 +275,22 @@ SINGLETON_DECLARE(IOSSystemUtil)
  */
 - (BOOL)isJailbroken;
 
+/**
+ 保存字符串到剪切板
+
+ @param content 字符串内容
+ */
+- (void)saveToPasteboard:(NSString*)content;
+
+
+/**
+ 发送http请求
+
+ @param type get/post
+ @param url url
+ @param data 数据
+ @param handler 回调
+ */
+- (void)sendRequest:(NSString*)type url:(NSString*)url data:(NSDictionary*)data handler:(void(^)(BOOL,NSString*))handler;
+
 @end

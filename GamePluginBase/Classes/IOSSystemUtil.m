@@ -11,6 +11,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <UIKit/UIKit.h>
 #import <AdSupport/ASIdentifierManager.h>
+#import <AFNetworking/AFNetworking.h>
 
 #include <sys/sysctl.h>
 #include <sys/utsname.h>
@@ -340,6 +341,33 @@ SINGLETON_DEFINITION(IOSSystemUtil)
 
 - (BOOL)isJailbroken {
     return [JailbrokenDetector isDeviceJailbroken];
+}
+
+- (void)saveToPasteboard:(NSString *)content {
+    [UIPasteboard generalPasteboard].string = content;
+}
+
+- (void)sendRequest:(NSString *)type url:(NSString *)url data:(NSDictionary *)data handler:(void (^)(BOOL, NSString *))handler {
+    void(^success)(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) = ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSError *parseError = nil;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:&parseError];
+        NSString *respStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        handler(true, respStr);
+    };
+    void(^failure)(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) = ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        handler(false, [NSString stringWithFormat:@"%@", error]);
+    };
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setTimeoutInterval:10];
+    
+    if ([type isEqualToString:@"get"]) {
+        [manager GET:url parameters:nil progress:nil success:success failure:failure];
+    } else {
+        [manager POST:url parameters:data progress:nil success:success failure:failure];
+    }
 }
 
 #pragma mark - MFMailComposeViewControllerDelegate
