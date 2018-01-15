@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GamePluginBase'
-  s.version          = '0.2.9'
+  s.version          = '0.3.0'
   s.summary          = 'GamePluginBase'
 
 # This description is used to generate tags and improve search results.

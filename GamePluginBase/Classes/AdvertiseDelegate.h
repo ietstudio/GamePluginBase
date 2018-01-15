@@ -32,7 +32,7 @@
 /**
  *  插屏广告是否准备就绪
  *
- *  @return 
+ *  @return 是否就绪
  */
 - (BOOL)isSpotAdReady;
 
@@ -55,7 +55,8 @@
 /**
  *  显示视频广告
  *
- *  @param func 视频广告是否播放完毕的回调
+ *  @param viewFunc 视频广告是否播放完毕的回调
+ *  @param clickFunc 视频广告是否点击的回调
  *
  *  @return 视频广告是否成功显示
  */
