@@ -311,7 +311,7 @@ SINGLETON_DECLARE(IOSSystemUtil)
  @param value value
  @param key key
  */
-- (void)setValue:(NSString*)value forKey:(NSString*)key;
+- (void)setObject:(NSObject*)object forKey:(NSString*)key;
 
 /**
  从UserDefault获取key对应的value
@@ -319,6 +319,6 @@ SINGLETON_DECLARE(IOSSystemUtil)
  @param key key
  @return value
  */
-- (NSString*)valueForKey:(NSString*)key;
+- (NSObject*)objectForKey:(NSString*)key;
 
 @end

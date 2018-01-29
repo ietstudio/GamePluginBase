@@ -378,12 +378,12 @@ SINGLETON_DEFINITION(IOSSystemUtil)
     }
 }
 
-- (void)setValue:(NSString *)value forKey:(NSString *)key {
-    [[NSUserDefaults standardUserDefaults] setValue:value forKey:key];
+- (void)setObject:(NSObject *)object forKey:(NSString *)key {
+    [[NSUserDefaults standardUserDefaults] setObject:object forKey:key];
 }
 
-- (NSString *)valueForKey:(NSString *)key {
-    return [[NSUserDefaults standardUserDefaults] valueForKey:key];
+- (NSObject *)valueForKey:(NSString *)key {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:key];
 }
 
 #pragma mark - MFMailComposeViewControllerDelegate
