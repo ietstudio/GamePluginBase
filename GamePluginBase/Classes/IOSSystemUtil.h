@@ -293,4 +293,20 @@ SINGLETON_DECLARE(IOSSystemUtil)
  */
 - (void)sendRequest:(NSString*)type url:(NSString*)url data:(NSDictionary*)data handler:(void(^)(BOOL,NSString*))handler;
 
+/**
+ 存储key-value到UserDefault
+
+ @param value value
+ @param key key
+ */
+- (void)setValue:(NSString*)value forKey:(NSString*)key;
+
+/**
+ 从UserDefault获取key对应的value
+
+ @param key key
+ @return value
+ */
+- (NSString*)valueForKey:(NSString*)key;
+
 @end
