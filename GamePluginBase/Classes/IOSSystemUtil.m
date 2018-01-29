@@ -358,15 +358,12 @@ SINGLETON_DEFINITION(IOSSystemUtil)
     [UIPasteboard generalPasteboard].string = content;
 }
 
-- (void)sendRequest:(NSString *)type url:(NSString *)url data:(NSDictionary *)data handler:(void (^)(BOOL, NSString *))handler {
+- (void)sendRequest:(NSString *)type url:(NSString *)url data:(NSDictionary *)data handler:(void (^)(BOOL, NSDictionary *))handler {
     void(^success)(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) = ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSError *parseError = nil;
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:&parseError];
-        NSString *respStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        handler(true, respStr);
+        handler(true, responseObject);
     };
     void(^failure)(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) = ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        handler(false, [NSString stringWithFormat:@"%@", error]);
+        handler(false, @{@"error": error.localizedDescription});
     };
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];

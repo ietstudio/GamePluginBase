@@ -303,7 +303,7 @@ SINGLETON_DECLARE(IOSSystemUtil)
  @param data 数据
  @param handler 回调
  */
-- (void)sendRequest:(NSString*)type url:(NSString*)url data:(NSDictionary*)data handler:(void(^)(BOOL,NSString*))handler;
+- (void)sendRequest:(NSString*)type url:(NSString*)url data:(NSDictionary*)data handler:(void(^)(BOOL,NSDictionary*))handler;
 
 /**
  存储key-value到UserDefault

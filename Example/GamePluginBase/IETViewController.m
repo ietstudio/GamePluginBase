@@ -167,7 +167,7 @@
         [[IOSSystemUtil getInstance] saveToPasteboard:@"test content"];
     }}];
     [dataList addObject:@{@"name":@"sendRequest", @"func":^(){
-        [[IOSSystemUtil getInstance] sendRequest:@"get" url:@"" data:nil handler:^(BOOL result, NSString *resp) {
+        [[IOSSystemUtil getInstance] sendRequest:@"get" url:@"http://bj.eliteslibrary.com/sys/time" data:nil handler:^(BOOL result, NSDictionary *resp) {
             NSLog(@"result = %@, message = %@", NSStringFromBool(result), resp);
         }];
     }}];
