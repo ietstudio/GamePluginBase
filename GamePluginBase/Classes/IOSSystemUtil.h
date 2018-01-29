@@ -308,7 +308,7 @@ SINGLETON_DECLARE(IOSSystemUtil)
 /**
  存储key-value到UserDefault
 
- @param value value
+ @param object value
  @param key key
  */
 - (void)setObject:(NSObject*)object forKey:(NSString*)key;

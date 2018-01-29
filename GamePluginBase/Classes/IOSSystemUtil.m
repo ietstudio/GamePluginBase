@@ -382,7 +382,7 @@ SINGLETON_DEFINITION(IOSSystemUtil)
     [[NSUserDefaults standardUserDefaults] setObject:object forKey:key];
 }
 
-- (NSObject *)valueForKey:(NSString *)key {
+- (NSObject *)objectForKey:(NSString *)key {
     return [[NSUserDefaults standardUserDefaults] objectForKey:key];
 }
 

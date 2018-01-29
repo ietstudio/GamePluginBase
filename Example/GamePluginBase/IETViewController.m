@@ -171,11 +171,11 @@
             NSLog(@"result = %@, message = %@", NSStringFromBool(result), resp);
         }];
     }}];
-    [dataList addObject:@{@"name":@"setValue:forKey:", @"func":^(){
-        [[IOSSystemUtil getInstance] setValue:@"value1" forKey:@"key"];
+    [dataList addObject:@{@"name":@"setObject:forKey:", @"func":^(){
+        [[IOSSystemUtil getInstance] setObject:@{@"key":@"value"} forKey:@"key"];
     }}];
-    [dataList addObject:@{@"name":@"valueForKey:", @"func":^(){
-        NSLog(@"%@", [[IOSSystemUtil getInstance] valueForKey:@"key"]);
+    [dataList addObject:@{@"name":@"objectForKey:", @"func":^(){
+        NSLog(@"%@", [[IOSSystemUtil getInstance] objectForKey:@"key"]);
     }}];
     self.dataList = dataList;
 }
