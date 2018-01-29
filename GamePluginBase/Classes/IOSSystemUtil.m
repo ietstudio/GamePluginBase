@@ -320,6 +320,17 @@ SINGLETON_DEFINITION(IOSSystemUtil)
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
 
+- (void)cancelNotification:(UILocalNotification *)notification {
+    [[UIApplication sharedApplication] cancelLocalNotification:notification];
+}
+
+- (void)calcelAllNotifications {
+    NSArray *notifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    for (UILocalNotification * notification in notifications) {
+        [self cancelNotification:notification];
+    }
+}
+
 - (void)setBadgeNum:(NSInteger)num {
     [UIApplication sharedApplication].applicationIconBadgeNumber = num;
 }

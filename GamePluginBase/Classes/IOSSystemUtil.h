@@ -231,11 +231,23 @@ SINGLETON_DECLARE(IOSSystemUtil)
 - (void)setNotificationState:(BOOL)enable;
 
 /**
- *  发送通知
+ *  注册通知
  *
  *  @param userInfo     通知参数
  */
 - (void)postNotification:(NSDictionary *)userInfo;
+
+/**
+ 取消通知
+
+ @param notification 通知
+ */
+- (void)cancelNotification:(UILocalNotification *)notification;
+
+/**
+ 取消所有通知
+ */
+- (void)calcelAllNotifications;
 
 /**
  设置图标角标
