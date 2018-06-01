@@ -337,6 +337,10 @@ SINGLETON_DEFINITION(IOSSystemUtil)
 
 - (void)share:(NSArray *)items {
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
+    activityController.modalPresentationStyle = UIModalPresentationPopover;
+    activityController.popoverPresentationController.permittedArrowDirections = 0;
+    activityController.popoverPresentationController.sourceView = self.controller.view;
+    activityController.popoverPresentationController.sourceRect = (CGRect){self.controller.view.center, {1, 1}};
     [self.controller presentViewController:activityController animated:YES completion:nil];
 }
 
