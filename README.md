@@ -22,7 +22,7 @@ pod "GamePluginBase"
 
 ## Author
 
-gaoyang, gaoyang@joycastle.mobi
+gaoyang
 
 ## License
 
